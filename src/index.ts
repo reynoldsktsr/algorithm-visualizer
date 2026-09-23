@@ -3,10 +3,16 @@ export type { SortingVisualizerProps } from './sorting/SortingVisualizer'
 export type { SortAlgorithmId, SortAlgorithmInfo, SortStep } from './sorting/algorithms'
 export { SORT_ALGORITHMS } from './sorting/algorithms'
 
-export {
-  PathfindingVisualizer,
-  default as PathfindingVisualizerDefault,
-} from './pathfinding/PathfindingVisualizer'
-export type { PathfindingVisualizerProps } from './pathfinding/PathfindingVisualizer'
-export type { Cell, PathAlgorithmId, PathAlgorithmInfo, PathResult } from './pathfinding/algorithms'
-export { PATH_ALGORITHMS } from './pathfinding/algorithms'
+export { MazeVisualizer, default as MazeVisualizerDefault } from './maze/MazeVisualizer'
+export type { MazeVisualizerProps } from './maze/MazeVisualizer'
+export type { Maze, MazeCell, CellWalls } from './maze/generateMaze'
+export { generateMaze } from './maze/generateMaze'
+export type { MazeAlgorithmId, MazeAlgorithmInfo, MazePathResult } from './maze/algorithms'
+export { MAZE_ALGORITHMS } from './maze/algorithms'
+
+export { TreeVisualizer, default as TreeVisualizerDefault } from './tree/TreeVisualizer'
+export type { TreeVisualizerProps } from './tree/TreeVisualizer'
+export type { GeneratedTree, TreeNode } from './tree/generateTree'
+export { generateTree } from './tree/generateTree'
+export type { TreeAlgorithmId, TreeAlgorithmInfo, LcaResult } from './tree/algorithms'
+export { TREE_ALGORITHMS } from './tree/algorithms'

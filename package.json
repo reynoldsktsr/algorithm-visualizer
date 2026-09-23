@@ -1,7 +1,7 @@
 {
   "name": "algorithm-visualizer",
   "version": "0.1.0",
-  "description": "Step-by-step animated sorting and pathfinding algorithm visualizations as drop-in React components.",
+  "description": "Step-by-step animated sorting, maze-search, and binary-tree algorithm visualizations as drop-in React components.",
   "author": "Kieran Reynolds",
   "license": "MIT",
   "type": "module",

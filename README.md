@@ -1,12 +1,13 @@
 # algorithm-visualizer
 
-Step-by-step animated sorting and pathfinding algorithm visualizations as
-drop-in React components. This repo is both:
+Step-by-step animated visualizations of the algorithms that actually show up
+in coding exercises and interviews — sorting, maze search, and binary-tree
+traversal/path-finding — as drop-in React components. This repo is both:
 
-- an **importable component library** (`<SortingVisualizer />` and
-  `<PathfindingVisualizer />`), and
-- a **live demo app** showing both off, with a tab switcher and full controls
-  for each.
+- an **importable component library** (`<SortingVisualizer />`,
+  `<MazeVisualizer />`, and `<TreeVisualizer />`), and
+- a **live demo app** showing all three off, with a tab switcher and full
+  controls for each.
 
 Built with Vite, React, TypeScript, and Tailwind CSS.
 
@@ -26,16 +27,28 @@ Built with Vite, React, TypeScript, and Tailwind CSS.
 - Controls: algorithm picker, array size slider, shuffle, speed slider,
   play/pause, and step-forward
 
-### Pathfinding
+### Maze
 
+- A perfect maze (exactly one path between any two cells — no loops, always
+  solvable) generated with a randomized depth-first "recursive backtracker"
 - Breadth-first search, Dijkstra's algorithm, and A* (Manhattan-distance
-  heuristic), all implemented for real on an unweighted grid (walls block
-  movement, every open cell costs 1)
-- Draw walls by clicking and dragging over empty cells; drag the start/end
-  markers to new cells
+  heuristic) race from entrance to exit through the corridors
 - Animates visited-cell exploration order, then the final shortest path
-- Controls: algorithm picker, grid size slider, speed slider, clear walls,
-  clear path, and run
+- Controls: algorithm picker, maze size slider, speed slider, new maze, and
+  solve
+
+### Tree
+
+- A random binary search tree (5-40 nodes), laid out so it reads
+  left-to-right sorted like a real BST
+- Four modes, all real implementations of classic interview problems:
+  - **BFS (level order)** — queue-based level-by-level traversal
+  - **DFS (preorder)** — recursive depth-first traversal
+  - **Find path to node** — click a node, then trace the root-to-node path
+    via parent pointers
+  - **Lowest common ancestor** — click two nodes, then find the deepest
+    shared ancestor by comparing their root paths
+- Controls: mode picker, node count slider, speed slider, new tree, and run
 
 ## Install
 
@@ -49,13 +62,14 @@ not bundled.
 ## Usage
 
 ```tsx
-import { SortingVisualizer, PathfindingVisualizer } from 'algorithm-visualizer'
+import { SortingVisualizer, MazeVisualizer, TreeVisualizer } from 'algorithm-visualizer'
 
 export default function Demo() {
   return (
     <>
       <SortingVisualizer initialAlgorithm="merge" initialSize={50} />
-      <PathfindingVisualizer initialAlgorithm="astar" initialGridSize={24} />
+      <MazeVisualizer initialAlgorithm="astar" initialSize={20} />
+      <TreeVisualizer initialAlgorithm="lca" initialNodeCount={25} />
     </>
   )
 }
@@ -71,13 +85,21 @@ export default function Demo() {
 | `initialSize`      | `number`                                                         | `40`       | Initial array size.                     |
 | `initialAlgorithm` | `'bubble' \| 'selection' \| 'insertion' \| 'merge' \| 'quick'`   | `'bubble'` | Initial algorithm.                      |
 
-### `<PathfindingVisualizer />`
+### `<MazeVisualizer />`
 
 | Prop               | Type                              | Default | Description                             |
 | ------------------ | ------------------------------------ | ------- | ------------------------------------------ |
 | `className`        | `string`                          | —       | Extra class names on the outer wrapper. |
-| `initialGridSize`  | `number`                          | `20`    | Initial grid size (rows and columns).   |
+| `initialSize`      | `number`                          | `16`    | Initial maze size (rows and columns).   |
 | `initialAlgorithm` | `'bfs' \| 'dijkstra' \| 'astar'`  | `'bfs'` | Initial algorithm.                      |
+
+### `<TreeVisualizer />`
+
+| Prop                | Type                                    | Default | Description                             |
+| ------------------- | ------------------------------------------ | ------- | ------------------------------------------ |
+| `className`         | `string`                                | —       | Extra class names on the outer wrapper. |
+| `initialNodeCount`  | `number`                                | `19`    | Initial number of nodes in the tree.    |
+| `initialAlgorithm`  | `'bfs' \| 'dfs' \| 'path' \| 'lca'`     | `'bfs'` | Initial mode.                           |
 
 ## Local development
 
